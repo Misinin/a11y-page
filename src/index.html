@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="index.css" />
     <script type="module" src="app.js"></script>
   </head>
   <body>
@@ -23,23 +24,23 @@
     <main>
       <section>
         <h1 id="#main">Товары для котов</h1>
-        <button>TEST FOCUS BUTTON</button>
-        <div class="filter">
-          <!--Вставить через template -->
-          <label id="combo-label" class="combo-label"> Favorite Fruit: </label>
-          <div class="combo js-select">
+        <div class="filter combobox">
+          <label id="combobox-label" class="combobox__label"
+            >Сортировать по:</label
+          >
+          <div class="combobox__select select">
             <div
+              class="select__input combobox-input"
+              id="combo1"
+              tabindex="0"
+              role="combobox"
               aria-controls="listbox1"
               aria-expanded="false"
               aria-haspopup="listbox"
-              aria-labelledby="combo-label"
-              id="combo1"
-              class="combo-input"
-              role="combobox"
-              tabindex="0"
+              aria-labelledby="combobox-label"
             ></div>
             <div
-              class="combo-menu"
+              class="select__options options"
               role="listbox"
               id="listbox1"
               aria-labelledby="combo1-label"

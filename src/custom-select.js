@@ -16,10 +16,9 @@ const options = [
 
 export function createOptions(options, defaultSelected) {
   const fragment = document.createDocumentFragment();
-  const container = document.createElement("ul");
 
   options.forEach((option) => {
-    const element = document.createElement("li");
+    const element = document.createElement("div");
     const isSelected = option === defaultSelected;
 
     element.setAttribute("tabIndex", isSelected ? 0 : -1);
@@ -27,10 +26,8 @@ export function createOptions(options, defaultSelected) {
     element.textContent = option;
     element.classList.add("option");
 
-    container.appendChild(element);
+    fragment.appendChild(element);
   });
-
-  fragment.append(container);
 
   return fragment;
 }
@@ -62,8 +59,8 @@ function getNextOptionIndexByKeyValue({ evt, selectedIndex, items }) {
 }
 
 function createSelect({ elements, defaultValue, target }) {
-  const inputEl = target.querySelector(".combo-input");
-  const listEl = target.querySelector(".combo-menu");
+  const inputEl = target.querySelector(".select__input");
+  const listEl = target.querySelector(".select__options");
 
   setDefaultValue(elements, defaultValue, inputEl);
   addOptions({ data: elements, defaultValue, target: listEl });

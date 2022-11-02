@@ -1,0 +1,19 @@
+.combo-menu {
+  display: none;
+}
+
+.combo-menu--open {
+  display: block;
+}
+
+.option {
+  padding: 2px;
+}
+
+.current-option {
+  border: 1px solid blue;
+}
+
+.selected-option {
+  color: blue;
+}

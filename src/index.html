@@ -9,44 +9,58 @@
     <script type="module" src="app.js"></script>
     <link rel="stylesheet" href="index.css" />
   </head>
-  <body>
-    <header>
-      <a href="#main">К основному контенту</a>
-      <nav>
-        <ul>
-          <li>Товары для котов</li>
-          <li>Товары для собак</li>
-          <li>Товары для лошадей</li>
-          <li>Товары для черепах</li>
-          <li>Товары для рыб</li>
+  <body class="page">
+    <header class="header page__header">
+      <a class="header__skip-link visually-hidden" href="#main">
+        <span> К основному контенту </span>
+      </a>
+      <nav class="header__nav navigation">
+        <ul class="navigation__list">
+          <li>
+            <a href="/"> Товары для котов </a>
+          </li>
+          <li>
+            <a href="/"> Товары для собак </a>
+          </li>
+          <li>
+            <a href="/"> Товары для лошадей </a>
+          </li>
+          <li>
+            <a href="/"> Товары для черепах </a>
+          </li>
+          <li>
+            <a href="/"> Товары для рыб </a>
+          </li>
         </ul>
       </nav>
     </header>
-    <main>
-      <section>
-        <h1 id="#main">Товары для котов</h1>
-        <button>TEST FOCUS BUTTON</button>
-        <div class="filter">
-          <label id="combo-label" class="combo-label"> Favorite Fruit: </label>
-          <div class="combo js-select">
-            <div
-              class="combo-input"
-              id="combo1"
-              role="combobox"
-              aria-labelledby="combo-label"
-              aria-controls="listbox1"
-              aria-expanded="false"
-              aria-haspopup="listbox"
-              tabindex="0"
-            ></div>
-            <div
-              class="combo-menu"
-              id="listbox1"
-              role="listbox"
-              aria-labelledby="combo1-label"
-              tabindex="-1"
-            ></div>
+    <main class="main page__main">
+      <h2 class="main__title" id="#main" tabindex="0">Товары для котов</h2>
+      <section class="products" aria-label="Список товаров">
+        <div class="products__wrapper">
+          <div class="products__filter filter">
+            <label id="combo-label" class="combo-label">Сортировать по:</label>
+            <div class="combo js-select">
+              <div
+                class="combo-input"
+                id="combo1"
+                role="combobox"
+                aria-labelledby="combo-label"
+                aria-controls="listbox1"
+                aria-expanded="false"
+                aria-haspopup="listbox"
+                tabindex="0"
+              ></div>
+              <div
+                class="combo-menu"
+                id="listbox1"
+                role="listbox"
+                aria-labelledby="combo-label"
+                tabindex="-1"
+              ></div>
+            </div>
           </div>
+          <ul tabindex="0" aria-live="polite" class="products__list items"></ul>
         </div>
       </section>
     </main>

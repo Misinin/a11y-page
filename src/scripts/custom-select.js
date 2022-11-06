@@ -1,17 +1,8 @@
 const options = [
-  "Choose a Fruit",
-  "Apple",
-  "Banana",
-  "Blueberry",
-  "Boysenberry",
-  "Cherry",
-  "Cranberry",
-  "Durian",
-  "Eggplant",
-  "Fig",
-  "Grape",
-  "Guava",
-  "Huckleberry",
+  "По возрастанию цены",
+  "По убыванию цены",
+  "По популярности",
+  "Нет сотрировки",
 ];
 
 export function createOptions(options, defaultSelected) {
@@ -53,6 +44,7 @@ function setDefaultValue(elements, defaultValue, target) {
 function createSelect({ elements, defaultValue, target }) {
   const inputEl = target.querySelector(".combo-input");
   const listEl = target.querySelector(".combo-menu");
+  const list = document.querySelector(".products__list");
 
   setDefaultValue(elements, defaultValue, inputEl);
   addOptions({ data: elements, defaultValue, target: listEl });
@@ -136,12 +128,44 @@ function createSelect({ elements, defaultValue, target }) {
       listEl.classList.remove("combo-menu--open");
       inputEl.textContent = items[targetIndex].textContent;
       inputEl.setAttribute("aria-expanded", "false");
+      list.setAttribute(
+        "aria-label",
+        `Товары отсортированы ${items[targetIndex].textContent}`
+      );
+    }
+
+    if (
+      evt.key === "Escape" &&
+      inputEl.getAttribute("aria-expanded") === "true"
+    ) {
+      listEl.classList.remove("combo-menu--open");
+      inputEl.setAttribute("aria-expanded", "false");
+    }
+  }
+
+  function onOptionClick(evt) {
+    listEl.classList.remove("combo-menu--open");
+    inputEl.textContent = evt.target.textContent;
+    list.setAttribute(
+      "aria-label",
+      `Товары отсортированы ${evt.target.textContent}`
+    );
+    inputEl.setAttribute("aria-expanded", "false");
+  }
+
+  function onInputClick() {
+    if (inputEl.getAttribute("aria-expanded") === "false") {
+      inputEl.setAttribute("aria-expanded", "true");
+      listEl.classList.add("combo-menu--open");
+      return;
     }
   }
 
   inputEl.addEventListener("keydown", onInputKeyDown);
+  inputEl.addEventListener("click", onInputClick);
+  listEl.addEventListener("click", onOptionClick);
 }
 
 const target = document.querySelector(".filter");
 
-createSelect({ elements: options, defaultValue: "Blueberry", target });
+createSelect({ elements: options, defaultValue: "Нет сотрировки", target });

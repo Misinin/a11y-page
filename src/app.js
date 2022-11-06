@@ -1,3 +1,3 @@
-import { createSelect } from "./custom-select";
-
-window.addEventListener("load", createSelect);
+import "./scripts/custom-select";
+import "./scripts/skip-link";
+import "./scripts/product-list";
